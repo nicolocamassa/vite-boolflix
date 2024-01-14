@@ -1,5 +1,8 @@
 <script>
+import axios from "axios";
 import { store } from "../store";
+import CardGen from "./CardGen.vue";
+import AppHeader from "./AppHeader.vue";
 
 export default {
   name: "AppMain",
@@ -11,9 +14,36 @@ export default {
       store,
     };
   },
+  components: {
+    CardGen,
+    AppHeader
+  }, methods:{
+
+    /* AVVIO DELLA FUNZIONE TRAMITE PULSANTE */
+    /* FIXME: LA QUERY DEVE RITORNARE ALLO STATO PRIMARIO QUANDO SI RICERCA NUOVAMENTE */
+    searchClick() {
+      if (this.store.search !== "") { /* SE SEARCH NON É VUOTO */
+        this.store.endpoint += `&query=${this.store.search}`; /* L'ELEMENTO CERCATO VIENE AGGIUNTO ALL'ENDPOINT */
+        console.log(this.store.endpoint); /* TODO: DA ELIMINARE (VISUALIZZAZIONE ENDPOINT) */
+      }
+
+      axios.get(this.store.endpoint).then((response) => {
+        this.store.films = response.data.results;
+        console.log(this.store.films) /* TODO: DA ELIMINARE (RISULTATO FILM CERCATO) */
+      });
+    },
+  }
 };
 </script>
 <template lang="">
-  <div>{{ film.original_title }}</div>
+
+    <!-- RICERCA EFFETTUATA NELL'HEADER  -->
+    <AppHeader @searchedFilm="searchClick" />
+
+    <!-- GENERAZIONE DI TUTTE LE CARD RICERCATE -->
+    <!-- TODO: SONO PIÙ PAGINE, FARE IN MODO DI SCORRERE TRA DI ESSE -->
+    <CardGen v-for='(film, index) in store.films' :key="index" :film="film"/>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

@@ -25,7 +25,6 @@ export default {
 <template>
   <div>
     <AppMain />
-    <!--  -->
   </div>
 </template>
 
