@@ -9,17 +9,19 @@ export default {
         }
     },
     methods: {
-        searchClick(){
-            console.log(store.endpoint + store.search);
-        }
+        /* Quando il pulsante è cliccato */
+
     },
 };
 </script>
 <template lang="">
   <header>
 
+    <!-- Barra di ricerca del film -->
     <input type="text" name="searchBar" id="searchBar" v-model="store.search">
-    <input type="button" value="Cerca" @click='searchClick'>
+
+    <!-- Pulsante per la conferma -->
+    <input type="button" value="Cerca"  @click="$emit('searchedFilm')">
 
     <!-- TODO: Creare layout con searchbar e pulsante
                Cliccando il bottone deve cercare nell'api
