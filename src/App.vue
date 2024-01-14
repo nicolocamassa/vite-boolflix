@@ -34,9 +34,7 @@ export default {
 <template>
   <div>
     <AppHeader @searchedFilm="searchClick" />
-    <AppMain />
-
-    <div v-for='(film, index) in store.films' :key="index">{{ film.original_title }}</div>
+    <AppMain v-for='(film, index) in store.films' :key="index" :film="film"/>
   </div>
 </template>
 
