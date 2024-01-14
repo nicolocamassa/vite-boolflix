@@ -1,13 +1,15 @@
 <script>
-import axios from "axios";
+
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
 import { store } from "./store";
+import CardGen from "./components/CardGen.vue";
 
 export default {
   components: {
     AppHeader,
     AppMain,
+    CardGen
   },
   data() {
     return {
@@ -15,26 +17,15 @@ export default {
     };
   },
   methods: {
-    searchClick() {
-      if (this.store.search !== "") {
-        this.store.endpoint += `&query=${this.store.search}`;
-        console.log(this.store.endpoint);
-      }
-
-      axios.get(this.store.endpoint).then((response) => {
-        this.store.films = response.data.results;
-
-        console.log(this.store.films) /* Risultato film cercato */
-      });
-    },
+    
   },
 };
 </script>
 
 <template>
   <div>
-    <AppHeader @searchedFilm="searchClick" />
-    <AppMain v-for='(film, index) in store.films' :key="index" :film="film"/>
+    <AppMain />
+    <!--  -->
   </div>
 </template>
 
