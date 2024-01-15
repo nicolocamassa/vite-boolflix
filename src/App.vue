@@ -22,6 +22,13 @@ export default {
 <template>
   <div>
     <AppMain />
+
+    <!-- TODO: 
+      AGGIUNGERE CAST E GENERE DEI FILM [MILESTONE 5] !!!
+      AGGIUNGERE FILTRO PER IL GENERE [MILESTONE 6] !!!
+      
+      FILM SUGGERITI NELLA HOME PAGE
+    -->
   </div>
 </template>
 
