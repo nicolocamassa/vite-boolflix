@@ -1,35 +1,33 @@
-
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
-body{
-    background-color: rgb(22, 21, 27);
-    font-family: 'Inter', sans-serif;
-}
-
-.cover{
-    width: 340px;
-    height: 500px;
+body {
+  background-color: #16151b;
+  font-family: "Inter", sans-serif;
 }
 
 .card {
-    color: white;
-    margin: 40px 10px;
-    position: relative;
-  }
+  color: white;
+  margin: 40px 10px;
+  position: relative;
 
-.card:hover .info{
+  &:hover .info {
     opacity: 1;
     cursor: pointer;
+  }
 }
 
-.info{
+.cover {
+  width: 340px;
+  height: 500px;
+}
+
+.info {
     position: absolute;
     top: 0;
     width: 340px;
@@ -43,28 +41,32 @@ body{
     padding: 100px 30px;
     opacity: 0;
     overflow: auto;
+  }
+
+
+
+
+
+.film_descr {
+  margin-top: 100px;
 }
 
-.film_descr{
-    margin-top: 100px;
+h1 {
+  font-weight: 900;
+  font-size: 26px;
+  margin-top: 80px;
 }
 
-h1{
-    font-weight: 900;
-    font-size: 26px;
-    margin-top: 80px;
+h2 {
+  font-size: 18px;
 }
 
-h2{
-    font-size: 18px;
+.stars {
+  display: flex;
+  color: #fbeb5a;
 }
 
-.stars{
-    display: flex;
-    color: #FBEB5A;
-}
-
-.language_flag{
-    width: 50px;
-    margin: 30px 0;
+.language_flag {
+  width: 50px;
+  margin: 30px 0;
 }

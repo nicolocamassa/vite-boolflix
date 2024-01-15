@@ -53,22 +53,29 @@ export default {
 
     <!-- GENERAZIONE DI TUTTE LE CARD RICERCATE -->
     <!-- TODO: SONO PIÙ PAGINE, FARE IN MODO DI SCORRERE TRA DI ESSE -->
+    <h1 class="type">Film</h1>
     <div class="card_container">
       <CardGen v-for='(film, index) in store.films' :key="index" :film="film"/>
     </div>
 
 
-    <h1>Serie TV</h1>
+    <h1 class="type">Serie TV</h1>
     <div class="card_container">
     <TvGen v-for='(serie, index) in store.tv_series' :key="index" :serie="serie"/>
     </div>
 
 </template>
 <style lang="scss" scoped>
+  .type{
+    color: white;
+    margin-left: 70px;
+    margin-top: 200px;
+    font-size: 36px;
+  }
   .card_container{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 100px;
+    margin-bottom: -100px;
   }
 </style>
