@@ -21,7 +21,7 @@ export default {
 
     generateCoverImage(path) {
       if (path == null) {
-        return `https://picsum.photos/200/300`; /* TODO: SE LA FOTO E' NULLA METTERE UNA COVER CHE LO DIMOSTRA */
+        return `../assets/no-cover.png`; /*  FIXME: NON TROVA LA FOTO */
       }
 
       return `https://image.tmdb.org/t/p/w342/${path}`;
