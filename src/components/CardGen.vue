@@ -15,7 +15,8 @@ export default {
   },
   methods: {
     generateFlagImageUrl(language) {
-        return `https://flagcdn.com/16x12/${language}.png`
+        /* API Bandiera con lingua. */
+        return `https://www.unknown.nu/flags/images/${language}-100`
     }
 }
 };
@@ -27,7 +28,7 @@ export default {
     <div>{{ film.original_language }}</div>
     <div>{{ film.vote_average }}</div> <!-- TODO: 2 DECIMALI -->
     <img :src="generateFlagImageUrl(film.original_language)" alt="">
-    <!-- TODO: CERCARE API BANDIERE (LINGUA -> STATO -> BANDIERA [big data cloud]) o (LINGUA -> BANDIERA [non trovato])-->
+    
   </div>
 </template>
 <style lang="scss" scoped>
