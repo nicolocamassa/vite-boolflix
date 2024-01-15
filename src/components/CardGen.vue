@@ -25,7 +25,6 @@ export default {
   <div class="card">
     <h1>{{ film.title }}</h1>
     <h2>{{ film.original_title }}</h2>
-    <div>{{ film.original_language }}</div>
     <div>{{ film.vote_average }}</div> <!-- TODO: 2 DECIMALI -->
     <img :src="generateFlagImageUrl(film.original_language)" alt="">
     
