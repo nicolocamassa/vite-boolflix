@@ -5,6 +5,7 @@ export const store = reactive({
     apiKey: API_KEY,
     endpoint: `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=it_IT`,
     endpoint_tv: `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=it_IT`,
+    cover_image: `https://image.tmdb.org/t/p/w342/`,
     films: [],
     tv_series: [],
 
