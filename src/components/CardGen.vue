@@ -39,6 +39,7 @@ export default {
       return empty_stars;
     },
   }, computed: {
+    /* VENGONO PRESI SOLO I PRIMI 5 NOMI */
     firstCast(){
       return this.cast.cast.slice(0, 5);
     }
@@ -100,6 +101,7 @@ export default {
       </div>
 
       <h2>Cast:</h2>
+      <!-- VIENE PRESO IL NOME DELL'ATTORE -->
       <div v-if="cast && cast.cast">
         <div v-for="(actor, index) in firstCast" :key="index">
           <div>{{ actor.name }}</div>

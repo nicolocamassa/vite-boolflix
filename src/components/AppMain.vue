@@ -24,7 +24,6 @@ export default {
   },
   methods: {
     /* AVVIO DELLA FUNZIONE TRAMITE PULSANTE */
-    
     searchClick() {
       
       let API_KEY = 'cd8576f9be964ebd86b19d98f629ae98'
