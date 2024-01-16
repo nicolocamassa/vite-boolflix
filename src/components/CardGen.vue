@@ -38,9 +38,11 @@ export default {
       let empty_stars = 5 - fill_stars;
       return empty_stars;
     },
-
-    
-  },
+  }, computed: {
+    firstCast(){
+      return this.cast.cast.slice(0, 5);
+    }
+  }
 };
 </script>
 <template lang="">
@@ -99,7 +101,7 @@ export default {
 
       <h2>Cast:</h2>
       <div v-if="cast && cast.cast">
-        <div v-for="(actor, index) in cast.cast" :key="index">
+        <div v-for="(actor, index) in firstCast" :key="index">
           <div>{{ actor.name }}</div>
         </div>
     </div>
