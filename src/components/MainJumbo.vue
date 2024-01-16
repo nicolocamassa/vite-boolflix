@@ -30,7 +30,6 @@ export default {
       .then((response) => {
         /* VIENE POPOLATO L'ARRAY CON I VIDEO DEL FILM PIU' POPOLARE */
         this.store.popular_trailer = response.data.results;
-        console.log(this.store.popular_trailer);
       });
 
       

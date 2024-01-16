@@ -6,7 +6,6 @@ import AppHeader from "./AppHeader.vue";
 import TvGen from "./TvGen.vue";
 import MainJumbo from "./MainJumbo.vue";
 
-
 export default {
   name: "AppMain",
   props: {
@@ -21,28 +20,46 @@ export default {
     CardGen,
     AppHeader,
     TvGen,
-    MainJumbo
+    MainJumbo,
   },
   methods: {
     /* AVVIO DELLA FUNZIONE TRAMITE PULSANTE */
-    /* FIXME: LA QUERY DEVE RITORNARE ALLO STATO PRIMARIO QUANDO SI RICERCA NUOVAMENTE */
+    
     searchClick() {
+      
+      let API_KEY = 'cd8576f9be964ebd86b19d98f629ae98'
+      this.store.endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=it_IT`
+
+      /* SE LA LUNGHEZZA DELL'ARRAY CHE CONTIENE IL CAST E' UGUALE A QUELLA CHE CONTIENE I FILM LA RESETTA */
+      if(this.store.cast.length == this.store.films.length){
+        this.store.cast = []
+      }
+
+      /* SE SEARCH NON É VUOTO */
       if (this.store.search !== "") {
-        /* SE SEARCH NON É VUOTO */
         this.store.endpoint += `&query=${this.store.search}`;
         this.store.endpoint_tv += `&query=${this.store.search}`; /* L'ELEMENTO CERCATO VIENE AGGIUNTO ALL'ENDPOINT */
-        console.log(
-          this.store.endpoint
-        ); /* TODO: DA ELIMINARE (VISUALIZZAZIONE ENDPOINT) */
-        console.log(this.store.endpoint_tv);
         store.click = true;
       }
 
       /* CHIAMATA PER I FILM */
       axios.get(this.store.endpoint).then((response) => {
         this.store.films = response.data.results;
-      });
 
+        /* PER OGNI FILM VIENE RECUPERATO L'ENDPOINT */
+        this.store.films.forEach((element, index) => {
+          this.store.endpoint_cast = `https://api.themoviedb.org/3/movie/${this.store.films[index].id}/credits?api_key=${this.store.apiKey}`;
+          
+          /* VIENE RICHIAMATO L'ENDPOINT DEL CAST DI OGNI SINGOLO FILM */
+          axios.get(this.store.endpoint_cast).then((response) => {
+
+              /* IL CAST DI OGNI SINGOLO FILM VIENE PUSHATO NELL'ARRAY*/
+              this.store.cast.push(response.data.cast);
+          })
+        });
+      })
+
+      /* FIXME: LA QUERY DEVE RITORNARE ALLO STATO PRIMARIO QUANDO SI RICERCA NUOVAMENTE */
       /* CHIAMATA PER LE SERIE TV */
       axios.get(this.store.endpoint_tv).then((response) => {
         this.store.tv_series = response.data.results;
@@ -53,16 +70,16 @@ export default {
       // Svuota gli array tv_series e films
       this.store.tv_series.splice(0, this.store.tv_series.length);
       this.store.films.splice(0, this.store.films.length);
+      this.store.cast = []
     },
   },
 };
 </script>
 <template lang="">
   <!-- RICERCA EFFETTUATA NELL'HEADER  -->
-  
   <AppHeader @searchedFilm="searchClick" @returnHome="returnHome" />
-  <MainJumbo />
-  
+<MainJumbo />
+   
 
   <!-- GENERAZIONE DI TUTTE LE CARD RICERCATE -->
   <!-- TODO: SONO PIÙ PAGINE, FARE IN MODO DI SCORRERE TRA DI ESSE -->
