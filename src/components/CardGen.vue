@@ -1,13 +1,13 @@
 <!-- GENERAZIONE DELLA SINGOLA CARD DEL FILM -->
+
 <script>
-import axios from "axios";
 import { store } from "../store";
-import CastComponent from "./CastComponent.vue";
 
 export default {
   name: "AppMain",
   props: {
     film: Object,
+    cast: Object
   },
   data() {
     return {
@@ -38,9 +38,9 @@ export default {
       let empty_stars = 5 - fill_stars;
       return empty_stars;
     },
-  }, components: {
-    CastComponent
-  }
+
+    
+  },
 };
 </script>
 <template lang="">
@@ -97,7 +97,12 @@ export default {
         {{ film.overview }}
       </div>
 
-      <h2>Cast: <CastComponent /></h2>
+      <h2>Cast:</h2>
+      <div v-if="cast && cast.cast">
+        <div v-for="(actor, index) in cast.cast" :key="index">
+          <div>{{ actor.name }}</div>
+        </div>
+    </div>
     </div>
   </div>
 </template>

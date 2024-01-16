@@ -53,8 +53,8 @@ export default {
           /* VIENE RICHIAMATO L'ENDPOINT DEL CAST DI OGNI SINGOLO FILM */
           axios.get(this.store.endpoint_cast).then((response) => {
 
-              /* IL CAST DI OGNI SINGOLO FILM VIENE PUSHATO NELL'ARRAY*/
-              this.store.cast.push(response.data.cast);
+              /* IL CAST DI OGNI SINGOLO FILM VIENE PUSHATO NELL'ARRAY */
+              this.store.cast.push(response.data);
           })
         });
       })
@@ -85,7 +85,7 @@ export default {
   <!-- TODO: SONO PIÙ PAGINE, FARE IN MODO DI SCORRERE TRA DI ESSE -->
   <h1 class="type" v-if="store.films.length != 0">Film</h1>
   <div class="card_container">
-    <CardGen v-for="(film, index) in store.films" :key="index" :film="film" />
+    <CardGen v-for="(film, index) in store.films" :key="index" :film="film" :cast="store.cast[index]"/>
   </div>
 
   <h1 class="type">Serie TV</h1>
